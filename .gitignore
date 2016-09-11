@@ -34,6 +34,12 @@ Temporary Items
 
 # Created by https://www.gitignore.io/api/node,
 
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
 ### Node ###
 # Logs
 logs
@@ -67,6 +73,7 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+src
 
 # Optional npm cache directory
 .npm
