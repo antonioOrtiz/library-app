@@ -1,12 +1,27 @@
 var gulp = require('gulp'),
-    jshint = require('gulp-jshint');
+    jshint = require('gulp-jshint'),
+    jscs = require('gulp-jscs');
 
-    var jsFiles = ['*.js', 'src/**/*.js'];
+var jsFiles = ['*.js', 'src/**/*.js'];
 
-gulp.task('style', function(){
-  gulp.src(jsFiles)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish', {
-        verbose: true
-        }));
-})
+gulp.task('style', function() {
+    return gulp.src(jsFiles)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish', {
+            verbose: true
+        }))
+        .pipe(jscs());
+});
+
+
+gulp.task('inject', function() {
+    var wiredep = require('wiredep').stream,
+        options = {
+            bowerJson : require('./bower.json'),
+            directory :  './public/lib'
+        };
+
+    return gulp.src('./src/views/*.html')
+        .pipe(wiredep(options))
+        .pipe(gulp.dest('./src/views'));
+});
