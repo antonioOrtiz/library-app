@@ -5,6 +5,7 @@ var express = require('express'),
     bookRouter = express.Router();
 
 app.use(express.static('public'));
+
 app.set('views', './src/views');
 
 app.set('view engine', 'ejs');
@@ -31,8 +32,10 @@ bookRouter.route('/single')
     .get(function(req, res) {
         res.send('Hello Single Book');
     });
-
+    
 app.use('/Books', bookRouter);
+
+
 
 app.get('/', function(req, res) {
     res.render('index', {
