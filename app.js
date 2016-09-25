@@ -9,7 +9,8 @@ var express = require('express'), //*****
         Text: 'Author'
     }],
 
-    bookRouter = require('./src/routes/bookRoutes')(nav);
+    bookRouter = require('./src/routes/bookRoutes')(nav),
+    authorRouter = require('./src/routes/authorRoutes')(nav);
 
 app.use(express.static('public')); //*****
 
