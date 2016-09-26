@@ -10,7 +10,7 @@ var express = require('express'), //*****
     }],
 
     bookRouter = require('./src/routes/bookRoutes')(nav),
-    authorRouter = require('./src/routes/authorRoutes')(nav);
+    adminRouter = require('./src/routes/adminRoutes')(nav);
 
 app.use(express.static('public')); //*****
 
@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 
 
 app.use('/Books', bookRouter);
+app.use('/Admin', adminRouter);
 
 app.get('/', function(req, res) { //*****
     res.render('index', {
