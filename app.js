@@ -1,4 +1,5 @@
 var express = require('express'), //*****
+    bodyParser = require('body-parser'),
     app = express(), //*****
     port = process.env.PORT || 5000, //*****
     nav = [{
@@ -10,9 +11,14 @@ var express = require('express'), //*****
     }],
 
     bookRouter = require('./src/routes/bookRoutes')(nav),
-    adminRouter = require('./src/routes/adminRoutes')(nav);
+    adminRouter = require('./src/routes/adminRoutes')(nav),
+    authRouter = require('./src/routes/authRoutes')(nav);
+
 
 app.use(express.static('public')); //*****
+app.use(bodyParser.json()); //*****
+app.use(bodyParser.urlencoded()); //*****
+
 
 app.set('views', './src/views'); //*****
 
@@ -21,6 +27,8 @@ app.set('view engine', 'ejs');
 
 app.use('/Books', bookRouter);
 app.use('/Admin', adminRouter);
+app.use('/Auth', authRouter);
+
 
 app.get('/', function(req, res) { //*****
     res.render('index', {
