@@ -1,0 +1,45 @@
+var express = require('express'),
+    adminRouter = express.Router(),
+    mongodb = require('mongodb').MongoClient,
+    books = [{
+        title: 'Sag Harbor',
+        genre: 'Fiction',
+        author: 'Colson Whitehead',
+        read: true
+    }, {
+        title: 'The Power Broker',
+        genre: 'Non-fiction',
+        author: 'Robert A. Caro',
+        read: true
+    }, {
+        title: 'The Cheese Monkeys',
+        genre: 'fiction',
+        author: 'Chip Kidd',
+        read: true
+    }, {
+        title: 'Conscience of a liberal',
+        genre: 'fiction',
+        author: 'Paul Krugman',
+        read: false
+    }],
+    router = function(nav) {
+
+        adminRouter.route('/addBooks')
+            .get(function(req, res) {
+                var url = 'mongodb://localhost:27017/library-app';
+                
+                mongodb.connect(url, function(err, db) {
+                    var collection = db.collection('books');
+                        collection.insertMany(books, 
+                            function(err, results) {
+                                res.send(results);          
+                                db.close();           
+                            });
+                });
+                // res.send('inserting books');
+            });
+
+        return adminRouter;
+    };
+
+module.exports = router;
