@@ -27,10 +27,10 @@ app.get('/', function(req, res) { //*****
         title: 'Hello from render',
         nav: [{
             Link: '/Books',
-            Text: 'Book'
+            Text: 'Books'
         }, {
             Link: '/Authors',
-            Text: 'Author'
+            Text: 'Authors'
         }]
     });
 });
