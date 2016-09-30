@@ -98,17 +98,23 @@
                     <!--/stories-->
                     <div class="row">
                       <br>
-                      <div class="col-md-2 col-sm-3 text-center">
-                        Sign In
-                      </div>
-                      <div class="col-md-10 col-sm-9">
+                      <div class="col-xs-offset-1 col-xs-4 ">
                         Sign Up
+                        <form name="signInForm" action="/auth/signUp" method="post">
+                          <span class="pull-left">User Name:</span>
+                          <br><input class="pull-left" name="userName" id="userName"> <br> <br>
+                          <span class="pull-left">Password: </span> <br><input class="pull-left" name="password" id="password"> <br><br>
+                          <input type="submit" class="pull-left" name="submit" value="Sign In" style=" text-align:center; color:white; background-color:#6565cb">
+                        </form>
                       </div>
-                      <form name="signUpForm" action="/auth/signUp" method="post">
-                          <input name="userName" id="userName">
-                          <input name="password" id="password">
-                          <input type="submit" name="submit" value="Sign up" style=" text-align:center; color:white; background-color:#6565cb">
-                      </form>
+                      <div class="col-xs-offset-1 col-xs-4 ">                        Sign In
+                        <form name="signInForm" action="/auth/signIn" method="post">
+                          <span class="pull-left">User Name:</span>
+                          <br><input class="pull-left" name="userName" id="userName"> <br> <br>
+                          <span class="pull-left">Password: </span> <br><input class="pull-left" name="password" id="password"> <br><br>
+                          <input type="submit" class="pull-left" name="submit" value="Sign In" style=" text-align:center; color:white; background-color:#6565cb">
+                        </form>
+                      </div>
                     </div>
                     <!--/stories- end->
                     
