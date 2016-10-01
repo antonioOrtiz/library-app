@@ -22,13 +22,10 @@ var express = require('express'), //*****
 
 app.use(express.static('public')); //*****
 app.use(bodyParser.json()); //*****
-app.use(bodyParser.urlencoded({extended: true})); //*****
+app.use(bodyParser.urlencoded()); //*****
 app.use(cookieParser()); //*****
-app.use(session({
-    secret: 'library',
-    resave: true,
-    saveUninitialized: true
-})); //*****
+app.use(session({secret: 'library'}));
+ //*****
 
 require('./src/config/passport')(app);
 
