@@ -7,13 +7,8 @@ var express = require('express'),
     router = function routerFunc(nav) {
         // body... 
         var bookController = require('../controllers/bookController')(null, nav);
-        bookRouter.use(function(req, res, next) {
-            if (!req.user) {
-                res.redirect('/');
-            }
-            next();
-        });
-
+        bookRouter.use(bookController.middleware);
+ 
         bookRouter.route('/')
             .get(bookController.getIndex);
 

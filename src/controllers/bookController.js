@@ -4,7 +4,13 @@ var mongodb = require('mongodb').MongoClient,
 
 var bookController = function bookControllerHandler(bookService, nav) {
     // body... 
-    var getIndex = function(req, res) {
+    var middleware = function(req, res, next) {
+            // if (!req.user) {
+            //     // res.redirect('/');
+            // }
+            next();
+        },
+        getIndex = function(req, res) {
             var url =
                 'mongodb://localhost:27017/library-app';
 
@@ -33,12 +39,17 @@ var bookController = function bookControllerHandler(bookService, nav) {
 
                 collection.findOne({ _id: id },
                     function(err, results) {
-                        res.render('bookView', {
-                            title: 'Books',
-                            nav: nav,
-                            book: results
-                        });
+                        bookService.getBookId(results.bookId,
 
+                            function(err, book) {
+                                /* body... */
+                                results.book = book;
+                                res.render('bookView', {
+                                    title: 'Books',
+                                    nav: nav,
+                                    book: results
+                                });
+                        });
                     }
                 );
 
@@ -48,7 +59,8 @@ var bookController = function bookControllerHandler(bookService, nav) {
 
     return {
         getIndex: getIndex,
-        getById: getById
+        getById: getById,
+        middleware: middleware
     };
 
 };
