@@ -6,9 +6,10 @@ var express = require('express'),
 
     router = function routerFunc(nav) {
         // body... 
-        var bookController = require('../controllers/bookController')(null, nav);
+        var bookService = require('../services/goodreadsService')(),
+            bookController = require('../controllers/bookController')(bookService, nav);
         bookRouter.use(bookController.middleware);
- 
+
         bookRouter.route('/')
             .get(bookController.getIndex);
 
