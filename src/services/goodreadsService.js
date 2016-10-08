@@ -1,13 +1,13 @@
 var http = require('http'),
     xml2js = require('xml2js'),
-    parser = xml2js.Parser({ explicitArray: false }),
+    parser = xml2js.Parser({ explicitArray: false });
 
-    goodreadsService = function goodreadsServicesHndlr(argument) {
+    var goodreadsService = function goodreadsServicesHndlr() {
         // body... 
         var getBookId = function getBookIdHndlr(id, cb) {
             var options = {
                     host: 'www.goodreads.com',
-                    patch: '/book/show/4428988-sag-harbor?format=xml&key=KygnapY9WhVO76geRW3EQ'
+                    path: '/book/show/4428988-sag-harbor?format=xml&key=KygnapY9WhVO76geRW3EQ'
                 },
                 callback = function(response) {
                     /* body... */
@@ -15,7 +15,7 @@ var http = require('http'),
                     response.on('data', function(chunk) {
                         str += chunk;
                     });
-                    response.on(end, function(chunk) {
+                    response.on('end', function(chunk) {
                         console.log(str);
                         parser.parserString(str, function(err, result) {
                             cb(null, result);
@@ -23,7 +23,7 @@ var http = require('http'),
                     });
 
                 };
-            return { getBookId: getBookId };
         };
+            return { getBookId: getBookId };
 };
         module.exports = goodreadsService;
