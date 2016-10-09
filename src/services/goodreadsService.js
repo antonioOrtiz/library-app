@@ -24,6 +24,8 @@ var http = require('http'),
 
                 };
         };
-            return { getBookId: getBookId };
+            return { 
+                getBookId: getBookId 
+            };
 };
         module.exports = goodreadsService;
