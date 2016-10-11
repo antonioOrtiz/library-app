@@ -9,10 +9,8 @@ var express = require('express'),
         var bookService = require('../services/goodreadsService')(),
             bookController = require('../controllers/bookController')(bookService, nav);
         bookRouter.use(bookController.middleware);
-
         bookRouter.route('/')
             .get(bookController.getIndex);
-
         bookRouter.route('/:id')
             .get(bookController.getById);
 
