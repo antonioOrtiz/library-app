@@ -39,7 +39,7 @@ var bookController = function bookControllerHandler(bookService, nav) {
 
                 collection.findOne({ _id: id },
                     function(err, results) {
-                        bookService.getBookId(results.bookId,
+                        bookService.getBookById(results.bookId,
 
                             function(err, book) {
                                 /* body... */
