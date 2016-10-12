@@ -5,25 +5,25 @@ var express = require('express'),
         title: 'Sag Harbor',
         genre: 'Fiction',
         author: 'Colson Whitehead',
-        boodId: 4428988,
+        bookId: 4428988,
         read: false
     }, {
         title: 'The Power Broker',
         genre: 'Non-fiction',
         author: 'Robert A. Caro',
-        boodId: 1111,
+        bookId: 1111,
         read: false
     }, {
         title: 'The Cheese Monkeys',
         genre: 'fiction',
         author: 'Chip Kidd',
-        boodId: 28756,
+        bookId: '28756',
         read: false
     }, {
         title: 'Conscience of a liberal',
         genre: 'fiction',
         author: 'Paul Krugman',
-        boodId: 1169429,
+        bookId: 1169429,
         read: false
     }],
     router = function(nav) {
