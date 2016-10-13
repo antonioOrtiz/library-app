@@ -17,7 +17,7 @@ var express = require('express'),
         title: 'The Cheese Monkeys',
         genre: 'fiction',
         author: 'Chip Kidd',
-        bookId: '28756',
+        bookId: 28756,
         read: false
     }, {
         title: 'Conscience of a liberal',
